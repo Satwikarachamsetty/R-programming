@@ -1,0 +1,16 @@
+#Mean of the given data
+print("Enter elements of the data")
+x<-c(6,4,8,2) 
+#x<-scan()
+print("The elements are")
+print(x)
+n<-length(x)
+sum=0
+for(i in x){
+    sum=sum+i
+}
+print("The mean of the given data")
+mean=sum%/%n
+print(mean)
+print("The mean of data using method is")
+print(mean(x))
