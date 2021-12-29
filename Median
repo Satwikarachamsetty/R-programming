@@ -1,7 +1,45 @@
+__________for odd numbers_________________________________________________________________________________________________________________________________________________________
 # Meadian of the given data
 print("Enter elements")
 # x=scan()
 x=c(1,2,3,4,5)
+print("The elements are")
+print(x)
+n=length(x)
+for(i in 1:(n-1))
+{
+ for(j in (i+1):n)
+ {
+   if(x[i]>x[j])
+     {
+       temp=x[i]
+       x[i]=x[j]
+       x[j]=temp
+      }
+  }
+}
+if(n%%2==0)
+{ s=(x[n/2]+x[n/2+1])/2
+print("The median is:")
+  print(s)
+  }else{
+    s=x[ceiling(n/2)]
+    print("The median is:")
+    print(s)
+}
+print("Then median using method is:")
+print(median(x))
+
+
+
+
+____for even numbers______________________________________________________________________________________________________________________________________________________________
+
+
+# Meadian of the given data
+print("Enter elements")
+# x=scan()
+x=c(1,2,3,4)
 print("The elements are")
 print(x)
 n=length(x)
