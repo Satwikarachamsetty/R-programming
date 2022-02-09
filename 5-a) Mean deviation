@@ -1,0 +1,64 @@
+source code:
+_________________________________
+x = scan()
+l = length(x)
+print(l)
+mean = sum(x)/l
+sum = 0
+for(i in x)
+{
+  sum = sum+abs(i-mean)
+}
+print(sum)
+md = sum/l
+print(md)
+
+
+output:
+_____________________________________
+1)
+> x = scan()
+1: 1
+2: 2
+3: 3
+4: 4
+5: 5
+Read 5 item
+> print(l)
+[1] 5
+> print(sum)
+[1] 6
+> print(md)
+[1] 1.2
+2)
+> x = scan()
+1: 1
+2: 2
+3: 3
+4: 4
+5: 5
+6: 
+Read 5 items
+
+> l = length(x)
+
+> print(l)
+[1] 5
+
+> mean = sum(x)/l
+
+> sum = 0
+
+> for(i in x)
++ {
++   sum = sum+abs(i-mean)
++ }
+
+> print(sum)
+[1] 6
+
+> md = sum/l
+
+> print(md)
+[1] 1.2
+> 
