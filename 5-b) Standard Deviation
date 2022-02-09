@@ -1,0 +1,61 @@
+source code
+______________________________________
+x = scan()
+l= length(x)
+mean = sum(x)/l
+sum = 0
+for(i in x){
+  sum = sum+((i-mean))**2
+}
+total = sqrt(sum/l)
+print(total)
+
+
+output:
+_________________________________
+1)
+> x = scan()
+1: 2
+2: 3
+3: 4
+4: 5
+Read 4 items
+
+> l= length(x)
+
+> mean = sum(x)/l
+
+> sum = 0
+
+> for(i in x){
++   sum = sum+((i-mean))**2
++ }
+
+> total = sqrt(sum/l)
+
+> print(total)
+[1] 1.118034
+
+2)
+> x = scan()
+1: 1
+2: 2
+3: 3
+4: 4
+5: 5
+Read 5 items
+
+> l= length(x)
+
+> mean = sum(x)/l
+
+> sum = 0
+
+> for(i in x){
++   sum = sum+((i-mean))**2
++ }
+
+> total = sqrt(sum/l)
+
+> print(total)
+[1] 1.414214
