@@ -1,0 +1,109 @@
+source code
+_________________________________________________________________________________________________________________
+
+print("enter data")
+x = scan()
+print("enter u")
+mu = scan()
+print("enter alpha")
+alp = scan()
+n = length(x)
+print("read condition")
+condition = readline()
+result = t.test(x,mu=mu)
+print(result)
+if(condition == '!=')
+{
+  print("for two tailed test")
+  tablevalue = qt(1-alp/2,df=n-1)
+  print(tablevalue)
+  
+    if(result[1]>=tablevalue)
+    {
+      print("we reject h0")
+    }else{
+      print("we accept h0")
+    }
+  
+}else{
+  print("for one tailed test")
+  tablevalue = qt(1-alp,df=n-1)
+  PRINT(tablevalue)
+  if(result[1]>tablevalue)
+  {
+    print("we reject")
+  }else{
+    print("we accept")
+  }
+}
+
+output
+_______________________________________________________________________________________________________
+
+> print("enter data")
+[1] "enter data"
+
+> x = scan()
+1: 63
+2: 63
+3: 66
+4: 67
+5: 68
+6: 69
+7: 70
+8: 70
+9: 71
+10: 71
+11: 
+Read 10 items
+
+> print("enter u")
+[1] "enter u"
+
+> mu = scan()
+1: 66
+2: 
+Read 1 item
+
+> print("enter alpha")
+[1] "enter alpha"
+
+> alp = scan()
+1: 0.05
+2: 
+Read 1 item
+
+> n = length(x)
+
+> print("read condition")
+[1] "read condition"
+
+> condition = readline()
+!=
+
+> result = t.test(x,mu=mu)
+
+> print(result)
+
+	One Sample t-test
+
+data:  x
+t = 1.8904, df = 9, p-value = 0.09128
+alternative hypothesis: true mean is not equal to 66
+95 percent confidence interval:
+ 65.646 69.954
+sample estimates:
+mean of x 
+     67.8 
+
+
+> if(condition == '!=')
++ {
++   print("for two tailed test")
++   tablevalue = qt(1-alp/2,df=n-1)
++   print(tablevalue)
++   
++     if(result[1]>=tablev .... [TRUNCATED] 
+[1] "for two tailed test"
+[1] 2.262157
+[1] "we accept h0"
