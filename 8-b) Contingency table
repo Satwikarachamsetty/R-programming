@@ -1,0 +1,81 @@
+source code
+_________________________________________________________________________________________
+
+x = as.table(rbind(c(190,243,197),c(82,44,44),c(23,78,34),c(5,12,8)))
+dimnames(x) = list(emp=c("labour","clerks","technicians","executives"),bonus=c("type1","type2","type3"))
+print(x)
+csum = colSums(x)
+mytable = (rbind(x,csum))
+rsum = rowSums(mytable)
+mytable = (cbind(mytable,rsum))
+print(mytable)
+View(mytable)
+result = chisq.test(x)
+tablevalue = qchisq(0.95,6)
+print(result)
+print(tablevalue)
+if(result[1] >= tablevalue)
+{
+  cat("given table is not fitted")
+}else{
+  cat("given table is fitted")
+}
+
+
+output
+__________________________________________________________________________________________________________
+
+x = as.table(rbind(c(190,243,197),c(82,44,44),c(23,78,34),c(5,12,8)))
+
+> dimnames(x) = list(emp=c("labour","clerks","technicians","executives"),bonus=c("type1","type2","type3"))
+
+> print(x)
+             bonus
+emp           type1 type2 type3
+  labour        190   243   197
+  clerks         82    44    44
+  technicians    23    78    34
+  executives      5    12     8
+
+> csum = colSums(x)
+
+> mytable = (rbind(x,csum))
+
+> rsum = rowSums(mytable)
+
+> mytable = (cbind(mytable,rsum))
+
+> print(mytable)
+            type1 type2 type3 rsum
+labour        190   243   197  630
+clerks         82    44    44  170
+technicians    23    78    34  135
+executives      5    12     8   25
+csum          300   377   283  960
+
+> View(mytable)
+
+> result = chisq.test(x)
+
+> tablevalue = qchisq(0.95,6)
+
+> print(result)
+
+	Pearson's Chi-squared test
+
+data:  x
+X-squared = 48.101, df = 6, p-value = 1.128e-08
+
+
+> print(tablevalue)
+[1] 12.59159
+
+> if(result[1] >= tablevalue)
++ {
++   cat("given table is not fitted")
++ }else{
++   cat("given table is fitted")
++ }
+given table is not fitted
+
+
