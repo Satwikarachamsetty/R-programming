@@ -1,0 +1,136 @@
+source code
+________________________________________________________________________________
+
+p = c(1,3,5,7,9)
+q = c(3,5,7,9,11)
+f = c(1,4,6,4,1)
+x = (p+q)/2
+print(x)
+fx = f*x
+sumfx = sum(fx)
+print(sumfx)
+sumf = sum(f)
+print(sumf)
+fxx = f*x*x
+sumfxx = sum(fxx)
+print(sumfxx)
+mean = sumfx/sumf
+m = mean*mean
+print(mean)
+sd = sqrt((sumfxx/sumf)-m)
+print(sd)
+z1 = round(pnorm(p,mean,sd),digits=5)
+z2 = round(pnorm(q,mean,sd),digits=5)
+px = round(z2-z1,digits=5)
+fe = round(sumf*px,digits=0)
+mydata = data.frame(p,q,x,f,fx,z1,z2,px,fe)
+View(mydata)
+print(mydata)
+subdata = list(NA,NA,mean,sumf,sumfx,NA,NA,NA,sum(fe))
+data = rbind(mydata,subdata)
+View(data)
+result = chisq.test(f,p=px,rescale.p = TRUE)
+print(result)
+tablevalue = qchisq(0.95,4)
+print(tablevalue)
+if(result[1]>=tablevalue){
+  cat("given table is not fit")
+}else{
+  cat("given table is fit")
+}
+
+
+output
+__________________________________________________________________________________________________________
+
+> p = c(1,3,5,7,9)
+
+> q = c(3,5,7,9,11)
+
+> f = c(1,4,6,4,1)
+
+> x = (p+q)/2
+
+> print(x)
+[1]  2  4  6  8 10
+
+> fx = f*x
+
+> sumfx = sum(fx)
+
+> print(sumfx)
+[1] 96
+
+> sumf = sum(f)
+
+> print(sumf)
+[1] 16
+
+> fxx = f*x*x
+
+> sumfxx = sum(fxx)
+
+> print(sumfxx)
+[1] 640
+
+> mean = sumfx/sumf
+
+> m = mean*mean
+
+> print(mean)
+[1] 6
+
+> sd = sqrt((sumfxx/sumf)-m)
+
+> print(sd)
+[1] 2
+
+> z1 = round(pnorm(p,mean,sd),digits=5)
+
+> z2 = round(pnorm(q,mean,sd),digits=5)
+
+> px = round(z2-z1,digits=5)
+
+> fe = round(sumf*px,digits=0)
+
+> mydata = data.frame(p,q,x,f,fx,z1,z2,px,fe)
+
+> View(mydata)
+
+> print(mydata)
+  p  q  x f fx      z1      z2      px fe
+1 1  3  2 1  2 0.00621 0.06681 0.06060  1
+2 3  5  4 4 16 0.06681 0.30854 0.24173  4
+3 5  7  6 6 36 0.30854 0.69146 0.38292  6
+4 7  9  8 4 32 0.69146 0.93319 0.24173  4
+5 9 11 10 1 10 0.93319 0.99379 0.06060  1
+
+> subdata = list(NA,NA,mean,sumf,sumfx,NA,NA,NA,sum(fe))
+
+> data = rbind(mydata,subdata)
+
+> View(data)
+
+> result = chisq.test(f,p=px,rescale.p = TRUE)
+
+> print(result)
+
+	Chi-squared test for given probabilities
+
+data:  f
+X-squared = 0.010944, df = 4, p-value = 1
+
+
+> tablevalue = qchisq(0.95,4)
+
+> print(tablevalue)
+[1] 9.487729
+
+> if(result[1]>=tablevalue){
++   cat("given table is not fit")
++ }else{
++   cat("given table is fit")
++ }
+given table is fit
+
+
