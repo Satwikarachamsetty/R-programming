@@ -1,0 +1,102 @@
+source
+____________________________________________________________________________________________________________
+
+print("enter data of mean1")
+x1 = scan()
+print("enter data of mean2")
+x2 = scan()
+print("enter condition")
+condition = readline()
+n1 = length(x1)
+n2 = length(x2)
+result= t.test(x1,x2)
+print(result)
+if(condition == '!=')
+{
+  print("for two tailed test")
+  tablevalue = qt(1-alp/2,df=n1+n2-2)
+  print(tablevalue)
+  
+  if(result[1]>=tablevalue)
+  {
+    print("we reject h0")
+  }else{
+    print("we accept h0")
+  }
+  
+}else{
+  print("for one tailed test")
+  tablevalue = qt(1-alp,df=n1+n2-2)
+  print(tablevalue)
+  if(result[1]>tablevalue)
+  {
+    print("we reject")
+  }else{
+    print("we accept")
+  }
+}
+
+output
+____________________________________________________________________________________________________________
+
+> print("enter data of mean1")
+[1] "enter data of mean1"
+
+> x1 = scan()
+1: 8260
+2: 8130
+3: 8350
+4: 8070
+5: 8340
+6: 
+Read 5 items
+
+> print("enter data of mean2")
+[1] "enter data of mean2"
+
+> x2 = scan()
+1: 7950
+2: 7890
+3: 7900
+4: 8140
+5: 7920
+6: 7840
+7: 
+Read 6 items
+
+> print("enter condition")
+[1] "enter condition"
+
+> condition = readline()
+!=
+
+> n1 = length(x1)
+
+> n2 = length(x2)
+
+> result= t.test(x1,x2)
+
+> print(result)
+
+	Welch Two Sample t-test
+
+data:  x1 and x2
+t = 4.1136, df = 7.8588, p-value = 0.003505
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 126.9208 453.0792
+sample estimates:
+mean of x mean of y 
+     8230      7940 
+
+
+> if(condition == '!=')
++ {
++   print("for two tailed test")
++   tablevalue = qt(1-alp/2,df=n1+n2-2)
++   print(tablevalue)
++   
++   if(result[1]>=tabl .... [TRUNCATED] 
+[1] "for two tailed test"
+[1] 2.262157
+[1] "we reject h0"
