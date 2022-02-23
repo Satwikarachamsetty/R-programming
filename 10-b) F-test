@@ -1,0 +1,198 @@
+______________________________________________________source code_________________________________________________________
+
+print("enter first values")
+x = scan()
+print("enter second values")
+y = scan()
+print("enter level of significance")
+alp = scan()
+n1 = length(x)
+n2 = length(y)
+sx = sd(x)
+sy = sd(y)
+sx2 = sx^2
+sy2 = sy^2
+fvalue = sx2/sy2
+print("f-test using program")
+if(fvalue>=1)
+{
+  print(fvalue)
+}else{
+  fvalue = 1/fvalue
+  cat("fvalue",fvalue)
+}
+
+F = var.test(x,y)
+print("f-test using built in function")
+print(F)
+if(F[1]>=1){
+  F = var.test(x,y)
+  print(F[1])
+  tabluevalue = qf(1-alp,n1-1,n2-1)
+  print(tablevalue)
+  if(F[1]>=tablevalue)
+  {
+    print("we reject h0")
+  }else{
+    print("we accept h0")
+  }
+}else{
+  F = var.test(y,x)
+  print(F[1])
+  tablevalue = qf(1-alp,n2-1,n1-1)
+  print(tablevalue)
+  if(F[1]>=tablevalue)
+  {
+    print("we reject h0")
+  }else{
+    print("we accept h0")
+  }
+}
+
+__________________________________output______________________________________
+when f is less than 1 case:
+
+[1] "enter first values"
+> x = scan()
+1: 16
+2: 26
+3: 27
+4: 23
+5: 24
+6: 22
+7: 23 
+Read 7 items
+[1] "enter second values"
+> y = scan()
+1: 33
+2: 42
+3: 35
+4: 32
+5: 28
+6: 31
+Read 6 items
+[1] "enter level of significance"
+> alp = scan()
+1: 0.05
+Read 1 item
+> fvalue = sx2/sy2
+[1] "f-test using program"
+> if(fvalue>=1)
++ {
++   print(fvalue)
++ }else{
++   fvalue = 1/fvalue
++   cat("fvalue",fvalue)
++ }
+fvalue 1.792105
+> F = var.test(x,y)
+
+> print("f-test using built in function")
+[1] "f-test using built in function"
+
+> print(F)
+
+	F test to compare two variances
+
+data:  x and y
+F = 0.558, num df = 6, denom df = 5, p-value = 0.4973
+alternative hypothesis: true ratio of variances is not equal to 1
+95 percent confidence interval:
+ 0.07996944 3.34107892
+sample estimates:
+ratio of variances 
+         0.5580029 
+
+
+> if(F[1]>=1){
++   F = var.test(x,y)
++   print(F[1])
++   tabluevalue = qf(1-alp,n1-1,n2-1)
++   print(tablevalue)
++   if(F[1]>=tablevalue)
++   {
++      .... [TRUNCATED] 
+$statistic
+       F 
+1.792105 
+
+[1] 4.387374
+[1] "we accept h0"
+
+---------when f is greater than 1 case
+
+[1] "enter first values"
+> x = scan()
+1: 9
+2: 11
+3: 13
+4: 11
+5: 15
+6: 9
+7: 12
+8: 14
+Read 8 items
+[1] "enter second values"
+
+> y = scan()
+1: 10
+2: 12
+3: 10
+4: 14
+5: 9
+6: 8
+7: 10
+Read 7 items
+[1] "enter level of significance"
+
+> alp = scan()
+1: 0.05
+2: 
+Read 1 item
+> fvalue = sx2/sy2
+> print("f-test using program")
+[1] "f-test using program"
+> if(fvalue>=1)
++ {
++   print(fvalue)
++ }else{
++   fvalue = 1/fvalue
++   cat("fvalue",fvalue)
++ }
+[1] 1.210843
+
+> F = var.test(x,y)
+
+> print("f-test using built in function")
+[1] "f-test using built in function"
+
+> print(F)
+
+	F test to compare two variances
+
+data:  x and y
+F = 1.2108, num df = 7, denom df = 6, p-value = 0.8315
+alternative hypothesis: true ratio of variances is not equal to 1
+95 percent confidence interval:
+ 0.2125976 6.1978188
+sample estimates:
+ratio of variances 
+          1.210843 
+
+
+> if(F[1]>=1){
++   F = var.test(x,y)
++   print(F[1])
++   tabluevalue = qf(1-alp,n1-1,n2-1)
++   print(tablevalue)
++   if(F[1]>=tablevalue)
++   {
++      .... [TRUNCATED] 
+$statistic
+       F 
+1.210843 
+
+[1] 4.387374
+[1] "we accept h0"
+
+
