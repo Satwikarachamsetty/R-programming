@@ -1,0 +1,100 @@
+code__________________________________________________________________________________________________________________
+
+print("enter first row values")
+x = scan()
+print("enter second row values")
+y = scan()
+print("enter level of significance")
+alp = scan()
+d = x-y
+print("enter condition")
+condition = readline()
+n = length(d)
+dbar = mean(d)
+std = sd(d)
+result = t.test(x,y,paired=TRUE)
+print(result)
+if(condition=='!=')
+{
+  tablevalue = qt(1-alp/2,df=n-1)
+  print(tablevalue)
+  if(result[1]>=tablevalue)
+  {
+    print("we reject h0")
+  }else{
+    print("we accept h0")
+  }
+}else{
+  tablevalue = qt(1-alp,df=n-1)
+  print(tablevalue)
+  if(result[1]>=tabluevalue)
+  {
+    print("we reject h0")
+  }else{
+    print("we accept h0")
+  }
+}
+
+________________outpt_____________________________________________________________________________________________________
+
+
+> print("enter first row values")
+[1] "enter first row values"
+> x = scan()
+1: 45
+2: 73
+3: 46
+4: 124
+5: 33
+6: 57
+7: 83
+8: 34
+9: 26
+10: 17 
+Read 10 items
+[1] "enter second row values"
+> y = scan()
+1: 36
+2: 60
+3: 44
+4: 119
+5: 35
+6: 51
+7: 77
+8: 29
+9: 24
+10: 11
+Read 10 items
+[1] "enter level of significance"
+> alp = scan()
+1: 0.05
+Read 1 item
+> d = x-y
+> print("enter condition")
+[1] "enter condition"
+> condition = readline()
+!=
+> n = length(d)
+> dbar = mean(d)
+> std = sd(d)
+> result = t.test(x,y,paired=TRUE)
+> print(result)
+	Paired t-test
+data:  x and y
+t = 4.0333, df = 9, p-value = 0.002958
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 2.283464 8.116536
+sample estimates:
+mean of the differences 
+                    5.2
+> if(condition=='!=')
++ {
++   tablevalue = qt(1-alp/2,df=n-1)
++   print(tablevalue)
++   if(result[1]>=tablevalue)
++   {
++     print("we reject h0")
++  .... [TRUNCATED] 
+[1] 2.262157
+[1] "we reject h0"
