@@ -1,0 +1,89 @@
+source code=================================
+
+x<-c(0,1,2,3,4)
+f<-c(419,352,154,56,19)
+fx <- f*x
+sumf <- sum(f)
+sumfx <- sum(fx)
+print(sumf)
+print(sumfx)
+n <- length(x)-1
+p <- (sumfx/sumf)
+print(p)
+px <- dpois(0:4,lambda = p)
+px <- round(px,digits=5)
+fee <- (px*sumf)
+fe <- round(fee,digits=0)
+mydata <- data.frame(x,f,fx,px,fee,fe)
+print(mydata)
+sums <- list(NA,sumf,sumfx,NA,NA,sum(fe))
+mydata <- rbind(mydata,sums)
+View(mydata)
+print(mydata,row.names=FALSE)
+result <- chisq.test(f,p=px,rescale.p=TRUE)
+print(result)
+tablevalue = qchisq(0.95,n)
+print(tablevalue)
+if(result[1]>tablevalue)
+{
+  print("we reject h0")
+}else{                     
+  print("we accept h0")
+}
+
+output==========================================================================
+
+> print(sumf)
+[1] 1000
+
+> print(sumfx)
+[1] 904
+
+> print(p)
+[1] 0.904
+
+> print(mydata)
+  x   f  fx      px    fee  fe
+1 0 419   0 0.40495 404.95 405
+2 1 352 352 0.36607 366.07 366
+3 2 154 308 0.16546 165.46 165
+4 3  56 168 0.04986  49.86  50
+5 4  19  76 0.01127  11.27  11
+
+> sums <- list(NA,sumf,sumfx,NA,NA,sum(fe))
+
+> mydata <- rbind(mydata,sums)
+
+> View(mydata)
+
+> print(mydata,row.names=FALSE)
+  x    f  fx      px    fee  fe
+  0  419   0 0.40495 404.95 405
+  1  352 352 0.36607 366.07 366
+  2  154 308 0.16546 165.46 165
+  3   56 168 0.04986  49.86  50
+  4   19  76 0.01127  11.27  11
+ NA 1000 904      NA     NA 997
+
+> result <- chisq.test(f,p=px,rescale.p=TRUE)
+
+> print(result)
+
+	Chi-squared test for given probabilities
+
+data:  f
+X-squared = 7.8555, df = 4, p-value = 0.09702
+
+
+> tablevalue = qchisq(0.95,n)
+
+> print(tablevalue)
+[1] 9.487729
+
+> if(result[1]>tablevalue)
++ {
++   print("we reject h0")
++ }else{                     
++   print("we accept h0")
++ }
+[1] "we accept h0"
